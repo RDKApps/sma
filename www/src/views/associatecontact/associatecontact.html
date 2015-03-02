@@ -1,0 +1,33 @@
+<!-- 
+date:25/02/2015
+name:ekta,nirali
+description: form for associate contact 
+-->
+<ion-view title="Associate Contact">
+    <ion-content padding="true" scroll="true" has-bouncing="true" overflow-scroll="true">
+        <form name="associateContact">
+            <ion-list>
+                <label class="item item-input">
+                    <input type="text" placeholder="Name" ng-model="associateContact.name">
+                </label>       
+                <label class="item item-input">
+                    <span class="input-label">Relationship
+                    <select name="relationship" ng-model="associateContact.relationship">
+                        <option value="1">M/S</option>
+                        <option value="2">Mr</option>
+                        <option value="3">Mrs</option>
+                        <option value="4">Miss</option>
+                    </select>
+                    </span>
+                </label>
+                 <label class="item item-input">
+                <textarea  cols="20" rows="10" ng-model="associateContact.description" placeholder="Descripation"> </textarea>
+                </label> 
+                <div class="button-bar">
+                    <button type="button" class="button button-balanced"  
+                        ng-click="saveAssociateContact()">Save</button>
+                </div>
+        </ion-list>
+    </form>
+  </ion-content>
+</ion-view>

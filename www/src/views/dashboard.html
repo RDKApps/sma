@@ -1,0 +1,52 @@
+<!-- 
+date:25/02/2015
+name:nirali,ekta,jay
+description:landing page.
+ -->
+
+
+<ion-view ng-init="init()">
+
+<!-- <ion-header-bar class="bar-stable"> -->
+<ion-nav-bar class="bar-stable">
+  <ion-nav-buttons side="right">
+      <button class="button button-dark" ng-click="signOut()">SignOut</button>
+  </ion-nav-buttons>
+  </ion-nav-bar>
+<!-- </ion-header-bar> -->
+
+  <ion-content padding="true" class="has-header">
+	<center>
+  <div class="list">
+			<div class="row">
+  					<div class="col">
+							<a class="item item-thumbnail-bottom" href="#/app/suspect">
+      							<img src="cover.jpg">
+                    <h1>Suspect</h1>
+    						</a>
+  					</div>
+  					<div class="col">
+							<a class="item item-thumbnail-bottom" href="#/app/lead">
+      							<img src="cover.jpg">
+      							<h1>Lead</h1>
+    						</a>
+  					</div>
+  			</div>
+			<div class="row">
+  					<div class="col">
+							<a class="item item-thumbnail-bottom" href="#/app/contact">
+      							<img src="cover.jpg">
+      							<h1>Contact</h1>
+    						</a>
+  					</div>
+  					<div class="col">
+							<a class="item item-thumbnail-bottom" href="#/app/remainder">
+      							<img src="cover.jpg">
+      							<h1>Remainder</h1>
+    						</a>
+  					</div>
+  			</div>
+        </div>
+  	</center>
+	</ion-content>
+</ion-view>

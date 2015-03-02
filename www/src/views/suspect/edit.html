@@ -1,0 +1,135 @@
+<!-- 
+date:25/02/2015
+name:nirali,ekta
+description: form for add edit suspect and actions
+-->
+<div class="tabs-striped tabs-top tabs-background-dark tabs-color-light ">
+        <div class="tabs tabs-icon-right">
+              <a class="tab-item active">
+                <i class="icon ion-home"></i>
+                Details
+              </a>
+              <a class="tab-item" ng-click="addFollowUpPopup()">
+                <i class="icon ion-plus-circled"></i>
+                Add Followup
+              </a>
+              <a class="tab-item" ng-click="showActionSheet()">
+                <i class="icon ion-gear-a"></i>
+                Actions
+              </a>
+        </div>
+</div>
+<ion-view title="Suspect ">
+    <ion-content padding="true" class="has-header" scroll="true" has-bouncing="true" overflow-scroll="true">
+    <div class="list">
+        <br/>
+        <ion-scroll>
+            <fieldset ng-disabled="shouldDisable">
+                <ion-list >
+                    <div ng-init="init()">
+                        <label class="item item-select" >
+                            <span class="input-label">Title
+                                <select name="typeOfContact" ng-model="newSuspect.title">
+                                    <option value="1">M/S</option>
+                                    <option value="2">Mr</option>
+                                    <option value="3">Mrs</option>
+                                    <option value="4">Miss</option>
+                                </select>
+                            </span>
+                        </label>
+                        <label class="item item-input">
+                            <input type="text" placeholder="Company name" ng-model="newSuspect.name"/>
+                        </label>
+                        <label class="item item-input">
+                            <input type="tel" placeholder="Mobile Number" ng-model="newSuspect.mobileNo"/>
+                        </label>
+                        <label class="item item-input">
+                            <input type="text" placeholder="Email" ng-model="newSuspect.email"/>
+                        </label>
+                        <label class="item item-select">
+                        <h2><b>Privacy</b></h2>
+                        <ion-radio ng-model="newSuspect.IsPublic" value="true">Public
+                        </ion-radio>
+                        <ion-radio ng-model="newSuspect.IsPrivate" ng-click="showKeyManagerPopup()">Private 
+                        </ion-radio>
+                        </label>
+                        <label class="item item-select" >
+                            <span class="input-label">Type of contact
+                            <select name="typeOfContact" ng-model="newSuspect.typeOfContact">
+                                <option value="1">Contact</option>
+                                <option value="2">Vendor</option>
+                                <option value="3">Both</option>
+                                <option value="4">Other</option>
+                            </select>
+                            </span>
+                        </label>
+
+                        <label class="item item-input">
+                            <input type="text" placeholder="keyAccountManager" ng-model="newSuspect.KeyAccountManager"/>
+                        </label>
+                        <label class="item item-input">
+                            <input type="text" placeholder="timeZone" ng-model="newSuspect.timeZone"/>
+                        </label>
+                        <label class="item item-input">
+                            <input type="text" placeholder="Designation" ng-model="newSuspect.designation"/>
+                        </label>
+                        <label class="item item-input">
+                            <input type="text" placeholder="office phone" ng-model="newSuspect.officePhone"/>
+                        </label>
+                        <label class="item item-input">
+                            <input type="tel" placeholder="other Phone" ng-model="newSuspect.otherPhone"/>
+                        </label>
+                        <label class="item item-input">
+                          <input type="text" placeholder="website" ng-model="newSuspect.website"/>
+                        </label>
+                        <div ><label class ="item item-input">
+                                <span class="input-label"><h2>Address</h2></span>
+                                </label>
+                        </div>
+                        <label class="item item-input">
+                            <input type="text" placeholder="Address Line 1" ng-model="newSuspect.billingAddress.addressLine1"/>
+                        </label>
+                        <label class="item item-input">
+                            <input type="text" placeholder="Address Line 2" ng-model="newSuspect.billingAddress.addressLine2"/>
+                        </label>
+
+                        <label class="item item-input">
+                            <input type="text" placeholder="Area" ng-model="newSuspect.billingAddress.area"/>
+                        </label>
+                        <label class="item item-input">
+                            <input type="text" placeholder="City" ng-model="newSuspect.billingAddress.city"/>
+                        </label>
+                         <label class="item item-input">
+                            <input type="text" placeholder="District" ng-model="newSuspect.billingAddress.district"/>
+                        </label>
+                          <label class="item item-input">
+                            <input type="text" placeholder="State" ng-model="newSuspect.billingAddress.state"/>
+                        </label>
+                        <label class="item item-input">
+                            <input type="text" placeholder="Country" ng-model="newSuspect.billingAddress.country"/>
+                        </label>
+                        <label class="item item-input">
+                            <input type="text" placeholder="Pincode" ng-model="newSuspect.billingAddress.zipCode"/>
+                        </label> 
+                        <div class="list card">
+                            <a href="#/app/followup" class="item item-icon-right">
+                                <i class="icon ion-android-arrow-forward"></i>Add Followup
+                                <div></div>
+                            </a>
+                            <a href="#/app/notes" class="item item-icon-right" >
+                                <i class="icon ion-android-arrow-forward"></i>Notes
+                                <div></div>
+                            </a>
+                            <a href="#/app/associatecontactlist" class="item item-icon-right">
+                                <i class="icon ion-android-arrow-forward"></i>Associate Contact
+                                 <div></div>
+                            </a>
+                    </div>
+                    <div class="button-bar">
+                         <button type="button" ng-hide="shouldDisable" class="button button-balanced" ng-click="saveSuspect()">Save</button>
+                    </div>
+                </ion-list>
+            </fieldset>
+        </ion-scroll>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,35 @@
+/* Empty. Add your own CSS if you like */
+/** Styling for the username field **/
+.error-msg{color: red;}
+
+label.item.has-error {border-bottom: 2px solid red;}
+
+/** Styling for the password field when an error exists**/
+label.item.has-error-lr {border-left: 2px solid red;border-right: 2px solid red;}
+
+/** Styling for the password field when an error has been resolved**/
+label.item.valid-lr {border-left: 2px solid green;border-right: 2px solid green;}
+
+/** Styling for the error text and container **/
+.form-errors {margin: 5px 0}
+
+.form-error {padding: 2px 0 2px 16px;color: red;}
+
+.button{padding-left: 40px;}
+
+.domain-column {position: absolute;right: 25px;top: 20px;}
+
+.bar-stable{height: 50px;border-color: black;}
+
+.button-bar{height: 50px;font-size: 30px;}
+/*a.button.button-full{height:70px;}
+a.button.icon.ion-plus-circled{padding-top:20px;font-size: 25px;}*/
+/* css for placeholder */
+input::-webkit-input-placeholder{color: #472400;}
+input::-moz-placeholder{color: #472400;}
+input:-moz-placeholder{color: #472400;}
+
+/*for drop down*/
+.dropDownTitle select{  background: transparent;width: 50%;position: absolute;font-size: 1em;}
+
+/*.dropDownTitle select option{padding-right: 0%;}*/

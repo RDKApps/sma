@@ -1,0 +1,42 @@
+<!-- 
+date:25/02/2015
+name:nirali,jay
+description: form for add remainder 
+-->
+<ion-view title="Add Reminder">
+    <ion-content padding="true" scroll="true" has-bouncing="true" overflow-scroll="true">
+        <label class="item item-input">
+            <input type="text" placeholder="Title">
+        </label>
+        <label class="item item-select">
+            <h2><b>Alert for me</b></h2>
+            <ion-radio value="true">SMS
+            </ion-radio>
+            <ion-radio>Email
+            </ion-radio>
+        </label>
+        <label class="item item-input">
+            <textarea  cols="20" rows="10" placeholder="Message"> </textarea>
+        </label> 
+        <label class="item item-input">
+            <input type="date" placeholder="Remainder start date">
+        </label>      
+        <label class="item item-input">
+            <input type="time" placeholder="Remainder time">
+        </label>
+        <label class="item item-select" >
+            <span class="input-label">Type of contact
+                <select name="typeOfRemainder">
+                    <option value="1">Hourely based</option>
+                    <option value="1">Weekly based</option>
+                    <option value="1">Monthly based</option>
+                </select>
+            </span>
+        </label>
+        <div class="button-bar">
+            <button type="button" class="button button-dark">Cancel
+            </button>
+            <button type="button" class="button button-balanced" ng-click="saveRemainder()">Save</button>
+        </div>
+    </ion-content>
+</ion-view>

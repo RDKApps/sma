@@ -1,0 +1,29 @@
+ <!-- 
+date:25/02/2015
+name:jay
+description: listing of leads 
+-->
+<ion-view title="Lead" ng-init="init()">
+    <ion-content padding="true" class="has-header">
+         <div class="button-bar">
+              <button type="button" class=" button button-dark icon ion-plus-circled"
+                 ng-click="addNewLead()"> Add New Lead</button>
+         </div>
+         <div>
+              <label class="item item-input" name="Search">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="search" placeholder="Search">
+              </label> 
+         </div>
+         <ion-list>
+            <ion-item ng-repeat="lead in leadList | orderBy:'name'"on-tap="SelectSpecificLead(lead.id)">
+              <label>
+                   <span hidden> {{lead.id}}</span>
+                   <span>{{lead.name}}</span><br/>
+                   <span>{{lead.mobileno}}</span>
+              </label>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>
+ 

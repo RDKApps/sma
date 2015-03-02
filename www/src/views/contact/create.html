@@ -1,0 +1,93 @@
+<!-- 
+date:25/02/2015
+name:jay
+description: form for add new contact 
+-->
+<ion-view title="Create New Contact">
+    <ion-content padding="true" scroll="true" has-bouncing="true" overflow-scroll="true">
+        <form name="addcontact">
+            <ion-list>
+                <label class="item item-input">
+                    <input type="text" placeholder="Company name" ng-model="newSuspect.cname">
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="Mobile Number" ng-model="newSuspect.mobileno">
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="Email">
+                </label>
+                <label class="item item-select">
+                <h2><b>Privacy</b></h2>
+                <ion-radio ng-repeat="item in privacy"
+                       ng-value="item.value"
+                       ng-model="newSuspect.item">
+                        {{ item.text }}
+                </ion-radio>
+                </label>
+                <label class="item item-select" >
+                    <span class="input-label">Type of contact
+                    <select name="TypeOfContact">
+                        <option value="Contact">Contact</option>
+                        <option value="Vendor">Vendor</option>
+                        <option value="Both">Both</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    </span>
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="Designation">
+                </label>
+                <label class="item item-input">
+                      <input type="text" placeholder="Reference">
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="office phone">
+                </label>
+
+                <label class="item item-input">
+                    <input type="text" placeholder="other Phone">
+                </label>
+                <label class="item item-input">
+                  <input type="text" placeholder="website">
+                </label>
+                <div ><label class ="item item-input">
+                        <span class="input-label"><h2>Address</h2></span>
+                        </label>
+                </div>
+                <label class="item item-input">
+                    <input type="text" placeholder="Address Line 1">
+                </label>
+
+                <label class="item item-input">
+                    <input type="text" placeholder="Address Line 2">
+                </label>
+
+                <label class="item item-input">
+                    <input type="text" placeholder="Area">
+                </label>
+
+                <label class="item item-input">
+                    <input type="text" placeholder="Pincode">
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="City">
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="State">
+                </label>
+
+                <label class="item item-input">
+                    <input type="text" placeholder="District">
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="Country">
+                </label>
+            <div class="button-bar">
+                <button type="button" class="button button-balanced icon-left ion-checkmark" on-tap="addcontact()" ng-disabled="addcontact.title.$invalid" 
+                ng-click="addNewContact()">Save</button>
+            </div>
+        </ion-list>
+    </form>
+  </ion-content>
+<!--</ion-scroll>-->
+</ion-view>

@@ -1,0 +1,49 @@
+<!-- 
+date:25/02/2015
+name:ekta,nirali,jay
+description: form for login
+-->
+<ion-modal-view>
+  <center>
+      <h1 class="title" align-title="center"><img class="title-image" src="src/assets/img/soulcrm.png" width="200" height="50" /></h1>
+  </center>
+<ion-content padding="true" class="has-header" >
+    <form name="loginForm"  novalidate ng-submit="doLogin(loginForm)" >
+            <!-- for backend error -->
+            <p class="error-msg" ng-model="errorMessage">{{errorMessage}}</p>
+            <!-- for front end error -->
+            <div class="error-msg" ng-show="loginForm.$submitted || loginForm.userdomain.$touched">
+                <span ng-show="loginForm.userdomain.$error.required">please enter domain</span>
+            </div>
+            <div ng-if="loginForm.userdomain.$valid">  
+                <div class="error-msg" ng-show="loginForm.$submitted||loginForm.username.$dirty && loginForm.username.$invalid">
+                    <span ng-show="loginForm.username.$error.required">please enter username</span>
+                </div>
+            </div>
+            <div class="error-msg"  ng-if="loginForm.useremail.$valid && loginForm.userdomain.        $valid">
+                  <div ng-show="loginForm.$submitted||loginForm.userpassword.$dirty && loginForm.      userpassword.$invalid" >
+                    <span ng-show="loginForm.userpassword.$error.required">please enter password</span>
+               </div>
+            </div>
+            <!--login form -->
+            <label class="item item-input">
+                <input type="text" ng-model="loginData.domainName" placeholder="Company Name" name="userdomain" autofocus required >
+                <div class="column domain-column">
+                    <span id="domain" class="domain" value="mysoulcrm.com" name="domain">          .mysoulcrm.com</span>
+                </div>
+            </label>
+            <label class="item item-input">
+                <input type="text" name="username" ng-model="loginData.username" 
+                       placeholder="username" required> 
+            </label>
+            <label class="item item-input">
+                <input type="password" ng-model="loginData.password" placeholder="Password"  
+                       name="userpassword" required>
+            </label>
+            <label class="item item-select">
+                <button class="button button-block button-positive" type="submit">
+                  Login</button>
+            </label>
+    </form> 
+  <ion-content> 
+</ion-modal-view>
