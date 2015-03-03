@@ -6,6 +6,7 @@ description: for followup action
 soulCRMApp.controller('FollowupController', function($scope,$rootScope,$state,$rootScope){
 	//call api for display all followup
 	$scope.init=function(){
+    $scope.followupList = FollowupService.getfollowupList();
 		/* $scope.suspectList = SuspectService.getSuspectList();
        .then(function(response){
               console.log("get success");

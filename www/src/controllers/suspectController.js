@@ -32,8 +32,8 @@ soulCRMApp.controller('SuspectListController', function($state,$scope,SuspectSer
     }  */    
     //to route to add suspect page
     $scope.addNewSuspect=function(){
-         alert("add");
-        $rootScope.goto('app.suspect.addSuspect');
+        // alert("add");
+        $rootScope.goto('app.addSuspect');
     }
     //to select specific suspect
     $scope.SelectSpecificSuspect=function(id){
@@ -199,17 +199,17 @@ soulCRMApp.controller('EditSuspectController', function($scope,$rootScope,$state
     }
   	$scope.addFollowUpPopup=function(){
     	  console.log("follow up popup");
-        $rootScope.goto('app.addfollowup')
+        $rootScope.goto('app.addfollowuplead')
       
   	}
   	convertToLeadPopup=function(){
     	   console.log("convert To Lead Popup");
-          $rootScope.goto("app.lead");
+          $rootScope.goto("app.addLead");
   	}
 
     convertToContactPopup=function(){
          console.log("convert To Contact Popup");
-         $rootScope.goto("app.contact");
+         $rootScope.goto("app.addContact");
     }
     deleteSuspect=function(){
           console.log("delete"+$stateParams.id); 

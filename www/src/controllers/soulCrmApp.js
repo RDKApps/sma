@@ -162,6 +162,15 @@ soulCRMApp.config(function($stateProvider, $urlRouterProvider,$httpProvider)
                                   }
                  }
         })
+        .state('app.addfollowuplead',{
+          url: "/addfollowuplead",
+          views:{
+                    'menuContent':{
+                                      templateUrl: "src/views/followup/addfollowuplead.html",
+                                      controller:"FollowupController"
+                                  }
+                 }
+        })
        .state('app.followupReply',{
           url: "/followupreply",
           views:{
