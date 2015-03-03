@@ -66,11 +66,11 @@ soulCRMApp.factory('SuspectService', function($http,$q,$rootScope){
   //factory for displaying the suspect list
 	suspectObj.getSuspectList = function(){
     //return suspectList;
+    $http.defaults.headers.common["SessionToken"]=$rootScope.sessionToken;
           var deferred = $q.defer();
-          $http.get('http://apiv2.mysoulcrm.com:8080/rawcontacts/');
+          $http.get('http://apiv2.staging5.mysoulcrm.com:8080/rawcontacts/search?Email=&Phone=&Page=1')
           .success(function(data){
               if(data.Status=="success"){
-                   //$http.defaults.headers.common["SessionToken"]=data.Data.SessionToken;
                    console.log(data.Data);
                    deferred.resolve(data.Data);
               } else{
@@ -83,11 +83,11 @@ soulCRMApp.factory('SuspectService', function($http,$q,$rootScope){
     }
 
   //factory for creating the new suspect
- 	suspectObj.createNewSuspect = function(newSuspect){
+ 	suspectObj.createNewSuspect = function(editSuspect){
             $http.defaults.headers.common["SessionToken"]=$rootScope.sessionToken;
-     				console.log("inside factory new suspect"+newSuspect);
-            var deferred = $q.defer();
-           $http.post('http://apiv2.staging5.mysoulcrm.com:8080/rawcontacts',newSuspect).success(function(data){
+     				console.log("inside factory new suspect"+editSuspect.IsPublic);
+            /*var deferred = $q.defer();
+           $http.post('http://apiv2.staging5.mysoulcrm.com:8080/rawcontacts',editSuspect).success(function(data){
               if(data.Status=="success"){
                    console("get success");
                    deferred.resolve(data.Data);
@@ -96,46 +96,35 @@ soulCRMApp.factory('SuspectService', function($http,$q,$rootScope){
                       deferred.reject(data.Error);}
           }).error(function(response){
                       console.log("get error");
-                      /*obj=JSON.parse(newSuspect);
-                      var dataObject = {};
-                      dataObject['name']=obj.Name;
-                      dataObject['mobileno']=obj.Mobile;
-                      console.log(dataObject);
-                      suspectList.push(dataObject);
-                      return dataObject;*/
+                      
                       deferred.reject(response.Error.Message);
           });
-          return deferred.promise;
+          return deferred.promise;*/
     }
     //factory for selecting data for specific suspect
     suspectObj.selectSpecificSuspectData = function(id){
             console.log("inside factory new suspect"+id);
-           /* var deferred = $q.defer();
-           $http.get(api,id)
+            var deferred = $q.defer();
+           $http.get('http://apiv2.staging5.mysoulcrm.com:8080/rawcontacts/'+id)
            .success(function(data){
               if(data.Status=="success"){
-                   console("get success");
                    deferred.resolve(data.Data);
               } else{
                       console.log("somethig wrong..");
                       deferred.reject(data.Error);}
           })//success finish
           .error(function(response){
-                      console.log("get error");
+                     console.log("get error");
                       deferred.reject(response.Error.Message);
           });
-          return deferred.promise;*/
-          var specificSuspect={
-                'id':1,
-                'name':'abc'
-          };
-          return specificSuspect;
+          return deferred.promise;
     }
     //factory for edit suspect
-    suspectObj.editSuspect = function(newSuspect){
-            console.log("inside factory new suspect"+newSuspect);
-            var deferred = $q.defer();
-           $http.put(api).success(function(data){
+    suspectObj.editSuspect = function(editSuspect){
+            //console.log("inside factory new suspect"+editSuspect.Name);
+          var deferred = $q.defer();
+          $http.put('http://apiv2.staging5.mysoulcrm.com:8080/rawcontacts/'+editSuspect)
+          .success(function(data){
               if(data.Status=="success"){
                    console("get success");
                    deferred.resolve(data.Data);
@@ -149,24 +138,28 @@ soulCRMApp.factory('SuspectService', function($http,$q,$rootScope){
           return deferred.promise;     
     }
     //factory for delete suspect
-    suspectObj.deleteSuspect = function(newSuspect){
-            console.log("inside factory new suspect"+newSuspect);
+    suspectObj.deleteSuspect = function(id){
+            console.log("delete id"+id);
             var deferred = $q.defer();
-           $http.delete(api).success(function(data){
+          $http.delete('http://apiv2.staging5.mysoulcrm.com:8080/rawcontacts/'+id)
+           .success(function(data){
               if(data.Status=="success"){
                    console("get success");
                    deferred.resolve(data.Data);
-              } else{
+              } 
+              else{
                       console.log("somethig wrong..");
-                      deferred.reject(data.Error);}
-          }).error(function(response){
+                      deferred.reject(data.Error);
+                    }
+             }).error(function(response){
                       console.log("get error");
                       deferred.reject(response.Error.Message);
-          });
+             });
           return deferred.promise;
     }
     return suspectObj ; 
-});//createnew suspect
+});
+//createnew suspect
 
 /* for push logic
             console.log("inside factory new suspect");

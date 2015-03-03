@@ -7,20 +7,20 @@ description:controllers->
                 editSuspectController
 */
 //controller for displaying suspect list on ng-init
-soulCRMApp.controller('SuspectListController', function($scope,SuspectService,$rootScope){
+soulCRMApp.controller('SuspectListController', function($state,$scope,SuspectService,$rootScope){
     //calling service to display list of suspectt
     //$scope.suspect={};
     $scope.init=function(){
-    	 $scope.suspectList = SuspectService.getSuspectList();
+    	 $scope.suspectList = SuspectService.getSuspectList()
        .then(function(response){
-              console.log("get success");
+              $scope.suspectList=response.Contacts;
           },
           function(responseMessage){
               console.log("get error::"+responseMessage);
           });
     }
    //for scrolling
-    $scope.suspectListPaging = function() {
+   /* $scope.suspectListPaging = function() {
          $scope.noMoreItemsAvailable = false;
          $scope.suspectList.push();
          var len = $scope.suspectList.length;
@@ -28,7 +28,7 @@ soulCRMApp.controller('SuspectListController', function($scope,SuspectService,$r
               $scope.noMoreItemsAvailable = true;
          }
          $scope.$broadcast('scroll.infiniteScrollComplete');
-    }      
+    }  */    
     //to route to add suspect page
     $scope.addNewSuspect=function(){
         $rootScope.goto('app.addSuspect');
@@ -36,8 +36,7 @@ soulCRMApp.controller('SuspectListController', function($scope,SuspectService,$r
     //to select specific suspect
     $scope.SelectSpecificSuspect=function(id){
       //$scope.user=SuspectService.selectSpecificSuspectData(id);
-      //console.log($scope.user);
-      $rootScope.goto("app.displaySuspect");
+      $state.go("app.displaySuspect",{'id':id});
     }
 });
 
@@ -48,20 +47,20 @@ soulCRMApp.controller('AddSuspectController',function($rootScope,$scope,SuspectS
 	 	  $scope.newSuspect={};
       $scope.newSuspect.BillingAddress={}; 
       //for save suspect
-   		$scope.saveSuspect=function(dataObject){
-              console.log(suspectJson);
-              $scope.newSuspect.IsPublic=false;
+   		$scope.saveSuspect=function(){
+              //$scope.newSuspect.IsPublic=false;
               $scope.newSuspect.KeyAccountManager=1;
-              var suspectJson=$scope.newSuspect;
-              $rootScope.goto('app.suspect');
-             /*console.log($scope.newSuspect);
+              //var suspectJson=$scope.newSuspect;
+              //$rootScope.goto('app.suspect');
+               console.log($scope.newSuspect);
                console.log($scope.newSuspect.BillingAddress);
-    				   SuspectService.createNewSuspect(suspectJson).then(function(response){
+    				   SuspectService.createNewSuspect( $scope.newSuspect);
+              /*.then(function(response){
                     console.log("get success");
                },
                function(responseMessage){
                     console.log("get error::"+responseMessage);
-               });*/             
+               });  */           
     	}
      /* //cancle button click
       $scope.cancelSuspect=function(){
@@ -96,25 +95,34 @@ soulCRMApp.controller('AddSuspectController',function($rootScope,$scope,SuspectS
 });//controller
 
 // controller for display, edit and for action sheet
-soulCRMApp.controller('EditSuspectController', function($scope,$rootScope,$stateParams,$state,$ionicActionSheet,$ionicPopup,$timeout){
+soulCRMApp.controller('EditSuspectController', function($scope,$rootScope,$stateParams,$state,$ionicActionSheet,$ionicPopup,$timeout,SuspectService){
   $scope.shouldDisable=true;
   //selecting the specific user
 	$scope.init=function(){
-        //alert($stateParams.id);
-        //console.log("inside edit display susp"+$state.par.id);
-        //$scope.user=SuspectService.selectSpecificSuspectData(id);
-        //--->api call
-        /* .then(function(response){
-              console.log("get success");
+          $scope.newSuspect = SuspectService.selectSpecificSuspectData($stateParams.id)
+          .then(function(response){
+              $scope.editSuspect=response;
           },
           function(responseMessage){
               console.log("get error::"+responseMessage);
-          });*/
+          });
   }
   //on edit button click from actions 
   editSuspect=function(){
     $scope.shouldDisable = false;
     //$scope.edit=false;
+  }
+  $scope.saveEditedSuspect=function() {
+  //       alert("update");
+         //$scope.editSuspect={};
+         console.log($scope.editSuspect);
+         /*SuspectService.editSuspect($scope.editSuspect)
+         .then(function(response){
+                    console.log("get success");
+          },
+          function(responseMessage){
+                    console.log("get error::"+responseMessage);
+          }); */
   }
   //for action sheet
   $scope.showActionSheet=function(){
@@ -122,22 +130,12 @@ soulCRMApp.controller('EditSuspectController', function($scope,$rootScope,$state
           titleText: 'Actions',
           buttons: [
                       { text: '<i class="icon ion-person"></i> Convert to lead' },
-                      { text: '<i class="icon ion-trash-a" style="color:red;"></i> Delete' },
+                      { text: '<span class="assertive"><i class="icon ion-trash-a"></i> Delete</span>' },
                       { text: '<i class="icon ion-document-text"></i> Add new note' },
                       { text: '<i class="icon ion-android-contacts"></i> Add Associatecontact' },
                       { text: '<i class="icon ion-edit"></i>Edit'}
                    ],
-          /*destructiveText: 'Delete',  
-          destructiveButtonClicked: function() {
-           console.log('DESTRUCT');
-            //console.log($scope.user.firstname);
-             var confirmStatus=confirm("Are you sure you want to delete data?");
-             if(confirmStatus)
-             //alert("Deleted data sucessfully");
-                   $rootScope.goto("app.suspect");
-             
-             return true;
-          },*/
+         
           cancelText: 'Cancel',
           cancel: function() {
                     console.log('CANCELLED');
@@ -201,10 +199,18 @@ soulCRMApp.controller('EditSuspectController', function($scope,$rootScope,$state
     	   console.log("convert To Lead Popup");
   	}
     deleteSuspect=function(){
-          console.log("delete"); 
+          console.log("delete"+$stateParams.id); 
           var confirmStatus=confirm("Are you sure you want to delete data?");
-             if(confirmStatus)
-                   $rootScope.goto("app.suspect");
+             if(confirmStatus){
+                SuspectService.deleteSuspect($stateParams.id)
+                .then(function(response){
+                    console.log("get success");
+                    $rootScope.goto("app.suspect");
+                 },
+                 function(responseMessage){
+                    console.log("get error::"+responseMessage);
+                 }); 
+              }
              return true;
     }
 });

@@ -68,7 +68,7 @@ soulCRMApp.config(function($stateProvider, $urlRouterProvider,$httpProvider)
                  }
         })
        .state('app.displaySuspect',{
-          url: "/displaysuspect",
+          url: "/displaysuspect/:id",
           views:{
                     'menuContent':{
                                    

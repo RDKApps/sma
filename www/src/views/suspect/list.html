@@ -18,14 +18,14 @@ description: listing of suspect
 <ion-view title="Suspect" ng-init="init()" left-buttons="leftButtons">
 <div>
     <ion-content padding="true" class="has-header">
+    <br/><br/><br/><br/><br/>
         <ion-list>
               <ion-item ng-repeat="suspect in suspectList | filter:search | orderBy:'companyName'" 
-                      on-tap="SelectSpecificSuspect(suspect.id)">
+                      on-tap="SelectSpecificSuspect(suspect.ContactId)">
                      <label>
-                            <span hidden>{{suspect.id}}</span>
-                            <span>{{suspect.name}}</span><br/>
-                            <span >{{suspect.companyName}}</span>
-                            <span>{{suspect.mobileno}}</span>
+                             <span>{{suspect.ContactId}}</span><br/>
+                            <span>{{suspect.Name}}</span><br/>
+                            <span>{{suspect.Mobile}}</span>
                      </label>
               </ion-item>
         </ion-list>
