@@ -11,6 +11,7 @@ soulCRMApp.controller('SuspectListController', function($state,$scope,SuspectSer
     //calling service to display list of suspectt
     //$scope.suspect={};
     $scope.init=function(){
+       console.log("init");
     	 $scope.suspectList = SuspectService.getSuspectList()
        .then(function(response){
               $scope.suspectList=response.Contacts;

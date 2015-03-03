@@ -6,8 +6,14 @@ description: for routing and http heders
 var soulCRMApp = angular.module('soulCRMApp', ['ionic']);
 
 soulCRMApp.run(function($ionicPlatform,$rootScope,$state) {
+  console.log("run");
+ //var labelData={};
+ var labelData=JSON.parse(window.sessionStorage['labels']||'{}');            
+ console.log("from run::"+labelData.RAWCONTACT_MODULE_LABEL);
+ $rootScope.prospectLable=labelData.RAWCONTACT_MODULE_LABEL;
+ $rootScope.leadLable=labelData.LEAD_MODULE_LABEL;
   $rootScope.goto=function(path){
-          $state.go(path);
+       $state.go(path);
     }
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -182,8 +188,8 @@ soulCRMApp.config(function($stateProvider, $urlRouterProvider,$httpProvider)
           url: "/remainder",
           views:{
                     'menuContent':{
-                                      templateUrl: "src/views/remainder/remainderlist.html",
-                                      controller:"reminderController"
+                                      templateUrl: "src/views/remainder/addremainder.html",
+                                      controller:"remainderController"
                                   }
                  }
         })
@@ -191,8 +197,8 @@ soulCRMApp.config(function($stateProvider, $urlRouterProvider,$httpProvider)
           url: "/addremainder",
           views:{
                     'menuContent':{
-                                      templateUrl: "src/views/remainder/addremainder.html",
-                                      controller:"reminderController"
+                                      templateUrl: "src/views/remainder/remainderlist.html",
+                                      controller:"remainderController"
                                   }
                  }
         });
