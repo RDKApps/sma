@@ -6,94 +6,136 @@ description: form for add new lead
 <ion-view title="Create New Lead" >
     <ion-content padding="true">
         <form name="addLead">
-            <ion-list>
-                <label class="item item-select" >
-                    <span class="input-label">Title
-                    <select name="typeOfContact" ng-model="newLead.title">
-                        <option value="1">M/S</option>
-                        <option value="2">Mr</option>
-                        <option value="3">Mrs</option>
-                        <option value="4">Miss</option>
-                    </select>
-                    </span>
-                </label>
-                <label class="item item-input">
-                    <input type="text" placeholder="Company name" ng-model="newLead.name" />
-                </label>
-                <label class="item item-input">
-                    <input type="tel" placeholder="Mobile Number" ng-model="newLead.mobileNo"/>
-                </label>
-                <label class="item item-input">
-                    <input type="text" placeholder="Email" ng-model="newLead.email"/>
-                </label>
-                <label class="item item-select">
-                <h2><b>Privacy</b></h2>
-                <ion-radio ng-model="newLead.IsPublic" value="true">Public
-                </ion-radio>
-                <ion-radio ng-model="newLead.IsPrivate" ng-click="showKeyManagerPopup()">Private 
-                </ion-radio>
-                </label>
-                <label class="item item-select" >
-                    <span class="input-label">Type of contact
-                    <select name="typeOfContact" ng-model="newLead.typeOfContact">
-                        <option value="1">Contact</option>
-                        <option value="2" selected>Vendor</option>
-                        <option value="3">Both</option>
-                        <option value="4">Other</option>
-                    </select>
-                    </span>
-                </label>
-
-                <label class="item item-input" >
-                    <input type="text" placeholder="keyAccountManager" ng-model="newLead.KeyAccountManager" />
-                </label>
-                <label class="item item-input">
-                    <input type="text" placeholder="timeZone" ng-model="newLead.timeZone" />
-                </label>
-                <label class="item item-input">
-                    <input type="text" placeholder="Designation" ng-model="newLead.designation"/>
-                </label>
-                <label class="item item-input">
-                    <input type="text" placeholder="office phone" ng-model="newLead.officePhone"/>
-                </label>
-                
-                <label class="item item-input">
-                  <input type="text" placeholder="website" ng-model="newLead.website"/>
-                </label>
-                <div ><label class ="item item-input">
-                        <span class="input-label"><h2>Address</h2></span>
+            <ion-list >
+                    <div ng-init="init()">
+                        <label class="item item-select" >
+                            <span class="input-label">Title
+                                <select name="typeOfContact" ng-model="newLead.title">
+                                    <option value="1">M/S</option>
+                                    <option value="2">Mr</option>
+                                    <option value="3">Mrs</option>
+                                    <option value="4">Miss</option>
+                                </select>
+                            </span>
                         </label>
-                </div>
-                <label class="item item-input">
-                    <input type="text" placeholder="Address Line 1" ng-model="newLead.billingAddress.addressLine1"/>
-                </label>
-                <label class="item item-input">
-                    <input type="text" placeholder="Address Line 2" ng-model="newLead.billingAddress.addressLine2"/>
-                </label>
+                        <label class="item item-input">
+                            <input type="text" placeholder=" name" ng-model="newLead.name"/>
+                        </label>
+                        <label class="item item-input">
+                           <input type="text" placeholder="Designation" ng-model="newLead.designation" />
+                       </label>
+                        <label class="item item-input">
+                           <input type="text" placeholder="Company  name" ng-model="newLead.cname" />
+                       </label>
+                        <label class="item item-input">
+                            <input type="text" placeholder="Email" ng-model="newLead.email"/>
+                        </label>
 
-                <label class="item item-input">
-                    <input type="text" placeholder="Area" ng-model="newLead.billingAddress.area"/>
-                </label>
-                <label class="item item-input">
-                    <input type="text" placeholder="City" ng-model="newLead.billingAddress.city"/>
-                </label>
-                 <label class="item item-input">
-                    <input type="text" placeholder="District" ng-model="newLead.billingAddress.district"/>
-                </label>
-                  <label class="item item-input">
-                    <input type="text" placeholder="State" ng-model="newLead.billingAddress.state"/>
-                </label>
-                <label class="item item-input">
-                    <input type="text" placeholder="Country" ng-model="newLead.billingAddress.country"/>
-                </label>
-                <label class="item item-input">
-                    <input type="text" placeholder="Pincode" ng-model="newLead.billingAddress.zipCode"/>
-                </label> 
-                <div class="button-bar">
-                    <button type="button" class="button button-balanced" 
-                        ng-click="saveLead()">Save</button>
-                </div>
-        </ion-list>
+                        <label class="item item-input">
+                            <input type="tel" placeholder="Mobile Number" ng-model="newLead.mobileNo"/>
+                        </label>
+
+                        <label class="item item-input">
+                            <input type="text" placeholder="office phone" ng-model="newLead.officePhone"/>
+                        </label>
+                        <label class="item item-input">
+                          <input type="text" placeholder="website" ng-model="newLead.website"/>
+                        </label>
+                        <div ><label class ="item item-input">
+                                <span class="input-label"><h2>Address</h2></span>
+                                </label>
+                        
+                        <label class="item item-input">
+                            <input type="text" placeholder="Address Line 1" ng-model="newLead.billingAddress.addressLine1"/>
+                        </label>
+                        <label class="item item-input">
+                            <input type="text" placeholder="Address Line 2" ng-model="newLead.billingAddress.addressLine2"/>
+                        </label>
+
+                        <label class="item item-input">
+                            <input type="text" placeholder="Area" ng-model="newLead.billingAddress.area"/>
+                        </label>
+                        <label class="item item-input">
+                            <input type="text" placeholder="City" ng-model="newLead.billingAddress.city"/>
+                        </label>
+                         <label class="item item-input">
+                            <input type="text" placeholder="District" ng-model="newLead.billingAddress.district"/>
+                        </label>
+                          <label class="item item-input">
+                            <input type="text" placeholder="State" ng-model="newLead.billingAddress.state"/>
+                        </label>
+                        <label class="item item-input">
+                            <input type="text" placeholder="Country" ng-model="newLead.billingAddress.country"/>
+                        </label>
+                        <label class="item item-input">
+                            <input type="text" placeholder="Pincode" ng-model="newLead.billingAddress.zipCode"/>
+                        </label> 
+                        </div>
+                        <label class="item item-input item-select" >
+
+                          <span class="input-label">Source Of Identity</span>
+                        <select name="Source Of Identity">
+                            <option value="1"></option>
+                            <option value="2" selected></option>
+                            <option value="3"></option>
+                            <option value="4"></option>
+                       </select>
+                      </label> 
+                      <label class="item item-input item-select" >
+                          <span class="input-label">Lead Status</span>
+                        <select name="LeadStatus">
+                            <option value="1"></option>
+                            <option value="2" selected></option>
+                            <option value="3"></option>
+                            <option value="4"></option>
+                       </select>
+                      </label> 
+                      <label class="item item-input item-select" >
+                          <span class="input-label">Lead Priority</span>
+                        <select name="LeadPriority">
+                            <option value="1"></option>
+                            <option value="2" selected></option>
+                            <option value="3"></option>
+                            <option value="4"></option>
+                       </select>
+                      </label> 
+                      <label class="item item-input item-select" >
+                          <span class="input-label">Assign To</span>
+                        <select name="AssignTo">
+                            <option value="1"></option>
+                            <option value="2" selected></option>
+                            <option value="3"></option>
+                            <option value="4"></option>
+                       </select>
+                      </label> 
+                       <label class="item item-input" name="Search">
+                          <i class="icon ion-search placeholder-icon"></i>
+                          <input type="search" placeholder="Search Products" ng-model="newLead.products">
+                        </label> 
+
+                        <label class="item item-input">
+                            <input type="text" placeholder="Remarks" ng-model="newLead.remarks"/>
+                        </label> 
+  
+
+                        <div class="list card">
+                            <a href="#/app/followup" class="item item-icon-right">
+                                <i class="icon ion-android-arrow-forward"></i>Add Followup
+                                <div></div>
+                            </a>
+                            <a href="#/app/notes" class="item item-icon-right" >
+                                <i class="icon ion-android-arrow-forward"></i>Notes
+                                <div></div>
+                            </a>
+                            <a href="#/app/associatecontactlist" class="item item-icon-right">
+                                <i class="icon ion-android-arrow-forward"></i>Associate Contact
+                                 <div></div>
+                            </a>
+                    </div>
+                    <div class="button-bar">
+                         <button type="button" ng-hide="shouldDisable" class="button button-balanced" ng-click="saveLead()">Save</button>
+                    </div>
+                </ion-list>
     </form>
   </ion-content>
 </ion-view>

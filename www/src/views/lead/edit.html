@@ -9,9 +9,9 @@ description: form for add edit lead and actions
                 <i class="icon ion-home"></i>
                 Details
               </a>
-              <a class="tab-item" ng-click="addFollowUpPopup()">
+             <a  class="tab-item" href="#/app/followup">
                 <i class="icon ion-plus-circled"></i>
-                Add Followup
+                Add FollowUp
               </a>
               <a class="tab-item" ng-click="showActionSheet()">
                 <i class="icon ion-gear-a"></i>
@@ -38,46 +38,26 @@ description: form for add edit lead and actions
                             </span>
                         </label>
                         <label class="item item-input">
-                            <input type="text" placeholder="Company name" ng-model="newLead.name"/>
-                        </label>
-                        <label class="item item-input">
-                            <input type="tel" placeholder="Mobile Number" ng-model="newLead.mobileNo"/>
-                        </label>
-                        <label class="item item-input">
-                            <input type="text" placeholder="Email" ng-model="newLead.email"/>
-                        </label>
-                        <label class="item item-select">
-                        <h2><b>Privacy</b></h2>
-                        <ion-radio ng-model="newLead.IsPublic" value="true">Public
-                        </ion-radio>
-                        <ion-radio ng-model="newLead.IsPrivate" ng-click="showKeyManagerPopUp()">Private 
-                        </ion-radio>
-                        </label>
-                        <label class="item item-select" >
-                            <span class="input-label">Type of contact
-                            <select name="typeOfContact" ng-model="newLead.typeOfContact">
-                                <option value="1">Contact</option>
-                                <option value="2">Vendor</option>
-                                <option value="3">Both</option>
-                                <option value="4">Other</option>
-                            </select>
-                            </span>
+                            <input type="text" placeholder=" name" ng-model="newLead.name"/>
                         </label>
 
                         <label class="item item-input">
-                            <input type="text" placeholder="keyAccountManager" ng-model="newLead.KeyAccountManager"/>
-                        </label>
+                           <input type="text" placeholder="Designation" ng-model="newLead.designation" />
+                       </label>
+
                         <label class="item item-input">
-                            <input type="text" placeholder="timeZone" ng-model="newLead.timeZone"/>
-                        </label>
+                           <input type="text" placeholder="Company  name" ng-model="newLead.cname" />
+                       </label>
                         <label class="item item-input">
-                            <input type="text" placeholder="Designation" ng-model="newLead.designation"/>
+                            <input type="text" placeholder="Email" ng-model="newLead.email"/>
                         </label>
+
+                        <label class="item item-input">
+                            <input type="tel" placeholder="Mobile Number" ng-model="newLead.mobileNo"/>
+                        </label>
+
                         <label class="item item-input">
                             <input type="text" placeholder="office phone" ng-model="newLead.officePhone"/>
-                        </label>
-                        <label class="item item-input">
-                            <input type="tel" placeholder="other Phone" ng-model="newLead.otherPhone"/>
                         </label>
                         <label class="item item-input">
                           <input type="text" placeholder="website" ng-model="newLead.website"/>
@@ -85,7 +65,7 @@ description: form for add edit lead and actions
                         <div ><label class ="item item-input">
                                 <span class="input-label"><h2>Address</h2></span>
                                 </label>
-                        </div>
+                        
                         <label class="item item-input">
                             <input type="text" placeholder="Address Line 1" ng-model="newLead.billingAddress.addressLine1"/>
                         </label>
@@ -111,20 +91,55 @@ description: form for add edit lead and actions
                         <label class="item item-input">
                             <input type="text" placeholder="Pincode" ng-model="newLead.billingAddress.zipCode"/>
                         </label> 
-                        <div class="list card">
-                            <a href="#/app/followup" class="item item-icon-right">
-                                <i class="icon ion-android-arrow-forward"></i>Add Followup
-                                <div></div>
-                            </a>
-                            <a href="#/app/notes" class="item item-icon-right" >
-                                <i class="icon ion-android-arrow-forward"></i>Notes
-                                <div></div>
-                            </a>
-                            <a href="#/app/associatecontactlist" class="item item-icon-right">
-                                <i class="icon ion-android-arrow-forward"></i>Associate Contact
-                                 <div></div>
-                            </a>
-                    </div>
+                        </div>
+                        <label class="item item-input item-select" >
+
+                          <span class="input-label">Source Of Identity</span>
+                        <select name="Source Of Identity">
+                            <option value="1"></option>
+                            <option value="2" selected></option>
+                            <option value="3"></option>
+                            <option value="4"></option>
+                       </select>
+                      </label> 
+                      <label class="item item-input item-select" >
+                          <span class="input-label">Lead Status</span>
+                        <select name="LeadStatus">
+                            <option value="1"></option>
+                            <option value="2" selected></option>
+                            <option value="3"></option>
+                            <option value="4"></option>
+                       </select>
+                      </label> 
+                      <label class="item item-input item-select" >
+                          <span class="input-label">Lead Priority</span>
+                        <select name="LeadPriority">
+                            <option value="1"></option>
+                            <option value="2" selected></option>
+                            <option value="3"></option>
+                            <option value="4"></option>
+                       </select>
+                      </label> 
+                      <label class="item item-input item-select" >
+                          <span class="input-label">Assign To</span>
+                        <select name="AssignTo">
+                            <option value="1"></option>
+                            <option value="2" selected></option>
+                            <option value="3"></option>
+                            <option value="4"></option>
+                       </select>
+                      </label> 
+                       <label class="item item-input" name="Search">
+                          <i class="icon ion-search placeholder-icon"></i>
+                          <input type="search" placeholder="Search Products" ng-model="newLead.products">
+                        </label> 
+
+                        <label class="item item-input">
+                            <input type="text" placeholder="Remarks" ng-model="newLead.remarks"/>
+                        </label> 
+  
+
+                        
                     <div class="button-bar">
                          <button type="button" ng-hide="shouldDisable" class="button button-balanced" ng-click="saveLead()">Save</button>
                     </div>

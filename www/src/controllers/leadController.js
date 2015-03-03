@@ -20,10 +20,9 @@ soulCRMApp.controller('LeadListController', function($scope,$state,LeadService,$
 })
 soulCRMApp.controller('AddLeadController', function($scope,$state,LeadService,$rootScope) 
 {
-       
-
+    
 })
-soulCRMApp.controller('EditLeadController', function($scope,$state,LeadService,$rootScope,$ionicActionSheet,$ionicPopup,$timeout) 
+soulCRMApp.controller('EditLeadController', function($scope,$state,LeadService,$stateParams,$rootScope,$ionicActionSheet,$ionicPopup,$timeout) 
 {
     $scope.shouldDisable=true;
     $scope.init=function(){
@@ -47,22 +46,9 @@ soulCRMApp.controller('EditLeadController', function($scope,$state,LeadService,$
   $scope.showActionSheet=function(){
       $ionicActionSheet.show({
           titleText: 'Actions',
-
-          destructiveText: 'Delete',  
-          destructiveButtonClicked: function() {
-           console.log('DESTRUCT');
-            //console.log($scope.user.firstname);
-             var confirmStatus=confirm("Are you sure you want to delete data?");
-             if(confirmStatus)
-             //alert("Deleted data sucessfully");
-                   $rootScope.goto("app.lead");
-             
-             return true;
-          },
           buttons: [
                       { text: '<i class="icon ion-person"></i> Convert to Contact' },
-                      { text: '<i class="icon ion-document-text"></i> Add new note' },
-                      { text: '<i class="icon ion-android-contacts"></i> Add Associatecontact' },
+                      { text: '<span class="assertive"><i class="icon ion-trash-a"></i> Delete</span>' },
                       { text: '<i class="icon ion-edit"></i>Edit'}
                    ],
           
@@ -77,12 +63,9 @@ soulCRMApp.controller('EditLeadController', function($scope,$state,LeadService,$
                           convertToContactPopup();
                           break;
                   case 1:
-                          displayNotePopup();
+                          deleteLead();
                           break;
                   case 2:
-                          $rootScope.goto('app.associatecontact');
-                          break;       
-                  case 3:
                           editLead();
                           break;
               }
@@ -90,33 +73,7 @@ soulCRMApp.controller('EditLeadController', function($scope,$state,LeadService,$
           }
     })
   }
-    //popup for display note
-    displayNotePopup=function(){
-        console.log("display popup called!!!");
-        $scope.noteData={};
-        var notePopup=$ionicPopup.show({
-            template:'<textarea cols="20" rows="10" ng-model="noteData.note" autofocus>',
-            title:'Add Note',
-            scope:$scope,
-            buttons:[
-                        {text:'cancel'},
-                        {text:'save',type:'button-positive',
-                          onTap:function(e){
-                             if(!$scope.noteData.note)
-                                e.preventDefault();
-                              else
-                                return $scope.noteData.note;
-                          }
-                        }
-                    ]
-        });
-        notePopup.then(function(res){
-                console.log(res);
-        });
-        $timeout(function(){
-                notePopup.close();
-        },10000);
-    }
+   
     $scope.addFollowUpPopup=function(){
           console.log("follow up popup");
         $rootScope.goto('app.addfollowup')
@@ -125,6 +82,19 @@ soulCRMApp.controller('EditLeadController', function($scope,$state,LeadService,$
     convertToContactPopup=function(){
            console.log("convert To contact Popup");
     }
-	   
-
+    deleteLead=function(){
+          console.log("delete"+$stateParams.id); 
+          var confirmStatus=confirm("Are you sure you want to delete data?");
+             if(confirmStatus){
+                LeadService.deleteLead($stateParams.id)
+                .then(function(response){
+                    console.log("get success");
+                    $rootScope.goto("app.lead");
+                 },
+                 function(responseMessage){
+                    console.log("get error::"+responseMessage);
+                 }); 
+              }
+           return true;
+    } 
 })

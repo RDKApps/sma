@@ -1,6 +1,6 @@
 /*
 date:25/02/2015
-name:nirali ,ekta
+name:nirali ,ekta,jay
 description: for followup action
 */
 soulCRMApp.controller('FollowupController', function($scope,$rootScope,$state,$rootScope){
@@ -22,6 +22,11 @@ soulCRMApp.controller('FollowupController', function($scope,$rootScope,$state,$r
 	//on click of save
    	$scope.saveFollowup=function(){
    	 $rootScope.goto("app.followup");
+
+   }
+   //on click of button open page for reply followup
+   $scope.followupReply=function(){
+     $rootScope.goto("app.followupReply");
 
    }
    

@@ -130,6 +130,7 @@ soulCRMApp.controller('EditSuspectController', function($scope,$rootScope,$state
           titleText: 'Actions',
           buttons: [
                       { text: '<i class="icon ion-person"></i> Convert to lead' },
+                      { text: '<i class="icon ion-person"></i> Convert to Contact' },
                       { text: '<span class="assertive"><i class="icon ion-trash-a"></i> Delete</span>' },
                       { text: '<i class="icon ion-document-text"></i> Add new note' },
                       { text: '<i class="icon ion-android-contacts"></i> Add Associatecontact' },
@@ -147,15 +148,19 @@ soulCRMApp.controller('EditSuspectController', function($scope,$rootScope,$state
                           convertToLeadPopup();
                           break;
                   case 1:
-                          deleteSuspect();
+                          convertToContactPopup();
                           break;
                   case 2:
-                          displayNotePopup();
+                          deleteSuspect();
+                          
                           break;
                   case 3:
-                          $rootScope.goto('app.associatecontact');
+                          displayNotePopup();
                           break;       
                   case 4:
+                          $rootScope.goto('app.associatecontact');
+                          break;
+                  case 5:
                           editSuspect();
                           break;
               }
@@ -197,7 +202,13 @@ soulCRMApp.controller('EditSuspectController', function($scope,$rootScope,$state
   	}
   	convertToLeadPopup=function(){
     	   console.log("convert To Lead Popup");
+          $rootScope.goto("app.lead");
   	}
+
+    convertToContactPopup=function(){
+         console.log("convert To Contact Popup");
+         $rootScope.goto("app.contact");
+    }
     deleteSuspect=function(){
           console.log("delete"+$stateParams.id); 
           var confirmStatus=confirm("Are you sure you want to delete data?");

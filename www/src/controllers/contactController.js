@@ -22,7 +22,7 @@ soulCRMApp.controller('AddContactController', function($scope,$state,LeadService
 	   
 
 })
-soulCRMApp.controller('EditContactController', function($scope,$state,LeadService,$rootScope,$ionicActionSheet,$ionicPopup,$timeout) 
+soulCRMApp.controller('EditContactController', function($scope,$state,LeadService,$stateParams,$rootScope,$ionicActionSheet,$ionicPopup,$timeout) 
 {
 	   $scope.shouldDisable=true;
     $scope.init=function(){
@@ -47,22 +47,12 @@ soulCRMApp.controller('EditContactController', function($scope,$state,LeadServic
       $ionicActionSheet.show({
           titleText: 'Actions',
           buttons: [
-                     // { text: '<i class="icon ion-person"></i> Convert to Contact' },
+                     
                       { text: '<i class="icon ion-document-text"></i> Add new note' },
-                      { text: '<i class="icon ion-android-contacts"></i> Add Associatecontact' },
-                      { text: '<i class="icon ion-android-contacts"></i> destructiveText: Delete'},
+                      { text: '<span class="assertive"><i class="icon ion-trash-a"></i> Delete</span>' },
                       { text: '<i class="icon ion-edit"></i>Edit'}
                    ],
-          destructiveButtonClicked: function() {
-           console.log('DESTRUCT');
-            //console.log($scope.user.firstname);
-             var confirmStatus=confirm("Are you sure you want to delete data?");
-             if(confirmStatus)
-             //alert("Deleted data sucessfully");
-                   $rootScope.goto("app.lead");
-             
-             return true;
-          },
+         
           cancelText: 'Cancel',
           cancel: function() {
                     console.log('CANCELLED');
@@ -70,20 +60,16 @@ soulCRMApp.controller('EditContactController', function($scope,$state,LeadServic
           buttonClicked: function(index){
               console.log('BUTTON CLICKED', index);
               switch(index){
+                 
                   case 0:
-                          //convertToContactPopup();
-                          break;
-                  case 1:
                           displayNotePopup();
                           break;
-                  case 2:
-                          $rootScope.goto('app.associatecontact');
-                          break;       
-                  case 3:
-                        destructiveButtonClicked(); 
+                  case 1:
+                          deleteContact();
                           break;
-                  case 4:
-                    	editContact();
+                      
+                  case 2:
+                    	    editContact();
                           break;       
               }
               return true;
@@ -125,6 +111,21 @@ soulCRMApp.controller('EditContactController', function($scope,$state,LeadServic
     convertToContactPopup=function(){
            console.log("convert To contact Popup");
     }
-	   
+
+    deleteContact=function(){
+          console.log("delete"+$stateParams.id); 
+          var confirmStatus=confirm("Are you sure you want to delete data?");
+             if(confirmStatus){
+                ContactService.deleteContact($stateParams.id)
+                .then(function(response){
+                    console.log("get success");
+                    $rootScope.goto("app.contact");
+                 },
+                 function(responseMessage){
+                    console.log("get error::"+responseMessage);
+                 }); 
+              }
+             return true;
+    }
 
 })

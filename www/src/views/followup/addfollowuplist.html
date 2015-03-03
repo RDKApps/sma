@@ -1,12 +1,12 @@
 <!-- 
 date:25/02/2015
-name:ekta
+name:ekta,jay
 description: form for add followup activity list
 -->
 <div class="bar bar-subheader">
     <div class="button-bar">
         <button type="button" class=" button button-dark icon ion-plus-circled"
-         ng-click="addFollowup()">AddFollowup</button>
+         ng-click="addFollowup()"> Add Followup</button>
     </div>
     <div>
         <label class="item item-input" name="Search">
@@ -14,6 +14,11 @@ description: form for add followup activity list
         <input type="search" placeholder="Search" ng-model="search">
         </label>
     </div> 
+</div>
+<div class="bar bar-subfooter">
+       <a  class="item item-icon-right item-dark" href="#/app/followupreply">
+        <i class="icon ion-android-arrow-forward"></i>REPLY                   
+      </a>
 </div>
 <ion-view title="Followup" ng-init="init()" left-buttons="leftButtons">
     <ion-content padding="true" class="has-header">
@@ -26,8 +31,10 @@ description: form for add followup activity list
                               <span>{{suspect.mobileno}}</span>
                        </label>
                 </ion-item>
-          </ion-list>
-       --></ion-content>
+          </ion-list>-->
+            
+       </ion-content>
+      
 </ion-view>
 
 

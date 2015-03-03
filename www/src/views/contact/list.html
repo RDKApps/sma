@@ -5,10 +5,7 @@ description: listing of contacts
 -->
 <ion-view title="Contact" ng-init="init()" >
    <ion-content padding="true" class="has-header">
-      <div class="button-bar">
-          <button type="button" class=" button button-dark icon ion-plus-circled" 
-            ng-click="addNewContact()"> Add New Contact</button>
-      </div>
+      
       <div>
           <label class="item item-input" name="Search">
             <i class="icon ion-search placeholder-icon"></i>
@@ -16,7 +13,7 @@ description: listing of contacts
           </label> 
       </div>
       <ion-list>
-        <ion-item ng-repeat="contact in contactList | orderBy:'name'" on-tap="SelectSpecificLead(contact.id)">
+        <ion-item ng-repeat="contact in contactList | orderBy:'name'" on-tap="SelectSpecificContact(contact.id)">
             <label>
                 <span hidden> {{contact.id}}</span>
                 <span>{{contact.name}}</span><br/>
