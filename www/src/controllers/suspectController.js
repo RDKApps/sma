@@ -32,7 +32,8 @@ soulCRMApp.controller('SuspectListController', function($state,$scope,SuspectSer
     }  */    
     //to route to add suspect page
     $scope.addNewSuspect=function(){
-        $rootScope.goto('app.addSuspect');
+         alert("add");
+        $rootScope.goto('app.suspect.addSuspect');
     }
     //to select specific suspect
     $scope.SelectSpecificSuspect=function(id){

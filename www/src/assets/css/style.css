@@ -33,3 +33,13 @@ input:-moz-placeholder{color: #472400;}
 .dropDownTitle select{  background: transparent;width: 50%;position: absolute;font-size: 1em;}
 
 /*.dropDownTitle select option{padding-right: 0%;}*/
+
+.bar-subheader {
+top: 44px;
+display: block;
+height: 105px;
+border-style: hidden;
+}
+.has-subheader {
+top: 150px;
+}

@@ -8,10 +8,14 @@ var soulCRMApp = angular.module('soulCRMApp', ['ionic']);
 soulCRMApp.run(function($ionicPlatform,$rootScope,$state) {
   console.log("run");
  //var labelData={};
- var labelData=JSON.parse(window.sessionStorage['labels']||'{}');            
- console.log("from run::"+labelData.RAWCONTACT_MODULE_LABEL);
- $rootScope.prospectLable=labelData.RAWCONTACT_MODULE_LABEL;
- $rootScope.leadLable=labelData.LEAD_MODULE_LABEL;
+ var infoData=JSON.parse(window.sessionStorage['sessionInfo']||'{}');            
+ if(infoData.hasOwnProperty('ConfigurationOptions')){
+    console.log("from run::"+infoData.ConfigurationOptions.RAWCONTACT_MODULE_LABEL);
+    $rootScope.prospectLable=infoData.ConfigurationOptions.RAWCONTACT_MODULE_LABEL;
+    $rootScope.leadLable=infoData.ConfigurationOptions.LEAD_MODULE_LABEL;
+    $rootScope.sessionToken=infoData.SessionToken; 
+ }
+ 
   $rootScope.goto=function(path){
        $state.go(path);
     }
@@ -52,6 +56,7 @@ soulCRMApp.config(function($stateProvider, $urlRouterProvider,$httpProvider)
       })
       .state('app', 
       {
+          abstract: true,
           url: '/app',
           templateUrl: 'src/views/menu.html'
        })
