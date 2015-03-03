@@ -21,6 +21,9 @@ soulCRMApp.controller('LoginController', function($scope,$state,$rootScope,Login
                 console.log($scope.loginData);
                 LoginService.verifyUser($scope.loginData).then(function(response){
                     $rootScope.sessionToken=response.SessionToken;
+                    //use window.localstorage
+                    window.sessionStorage['labels']=JSON.stringify(response.ConfigurationOptions);
+                   // var loginData=JSON.parse(window.localStorage['post']||'{}');            
                     $rootScope.prospectLable=response.ConfigurationOptions.RAWCONTACT_MODULE_LABEL;
                     $rootScope.leadLable=response.ConfigurationOptions.LEAD_MODULE_LABEL;
                     $state.go("dashBoard"); 

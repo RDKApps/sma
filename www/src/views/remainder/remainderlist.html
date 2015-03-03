@@ -17,15 +17,14 @@ description: form for add followup activity list
 </div>
 <ion-view title="Remainder" ng-init="init()" left-buttons="leftButtons">
     <ion-content padding="true" class="has-header">
-         <!--  <ion-list>
-                <ion-item ng-repeat="">
+          <ion-list>
+          <br/>
+          <br/><br/>
+                <ion-item ng-repeat="remainder in remainder" on-swipe-right="deleteRemaider()">
                        <label>
-                              <span hidden>{{suspect.id}}</span>
-                              <span hidden>{{suspect.companyName}}</span><br/>
-                              <span>{{suspect.name}}</span>
-                              <span>{{suspect.mobileno}}</span>
-                       </label>
+                              <span>{{remainder.description}}</span>
+                               </label>
                 </ion-item>
           </ion-list>
-       --></ion-content>
+      </ion-content>
 </ion-view>

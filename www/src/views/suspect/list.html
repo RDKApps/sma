@@ -3,10 +3,10 @@ date:25/02/2015
 name:jay
 description: listing of suspect
 -->
-<div class="bar bar-subheader">
+<!-- <div class="bar bar-subheader">
     <div class="button-bar" >
         <button type="button" class=" button button-dark icon ion-plus-circled"
-         ng-click="addNewSuspect()"> Add Prospect</button>
+         ng-click="addNewSuspect()">Add{{prospectLable}} </button>
     </div>
     <div class="bar bar-header item-input-inset">
         <label class="item-input-wrapper">
@@ -15,10 +15,11 @@ description: listing of suspect
         </label>
     </div>
 </div>
-<ion-view title="Prospect" ng-init="init()" left-buttons="leftButtons">
+<ion-view title={{prospectLable}} ng-init="init()" left-buttons="leftButtons">
+
 <div>
     <ion-content padding="true" class="has-header">
-    <br/><br/><br/><br/><br/>
+    <br/><br/><br/>
         <ion-list>
               <ion-item ng-repeat="suspect in suspectList | filter:search | orderBy:'companyName'" 
                       on-tap="SelectSpecificSuspect(suspect.ContactId)">
@@ -34,4 +35,35 @@ description: listing of suspect
          ng-if="!noMoreItemsAvailable" icon="ion-loading-c" >
     </ion-infinite-scroll>
   </div>
-</ion-view>
+</ion-view> -->
+ 
+
+
+<!-- <div>
+ <ion-header-bar class="bar-positive">
+    <h1 class="title">Todo</h1>
+  </ion-header-bar>
+  <div class="bar bar-subheader">
+  <h2 class="title">Sub Header</h2>
+</div>
+<div>
+ -->
+<div class="bar bar-subheader">
+  <h2 class="title">Sub Header</h2>
+  <div class="button-bar" >
+        <button type="button" class=" button button-dark icon ion-plus-circled"
+         ng-click="addNewSuspect()">Add{{prospectLable}} </button>
+    </div>
+    
+</div>
+  <ion-content class="has-subheader" ng-init="init()" >
+    <!-- our list and list items -->
+    <ion-list>
+      <ion-item ng-repeat="suspect in suspectList">
+         <label>
+            <span>{{suspect.Name}}</span>
+         </label>
+        
+      </ion-item>
+    </ion-list>
+  </ion-content>
