@@ -49,11 +49,9 @@ soulCRMApp.controller('AddSuspectController',function($rootScope,$scope,SuspectS
 	 	  $scope.newSuspect={};
       $scope.newSuspect.BillingAddress={}; 
       //for save suspect
-   		$scope.saveSuspect=function(){
-              //$scope.newSuspect.IsPublic=false;
+   		$scope.saveNewSuspect=function(){
               $scope.newSuspect.KeyAccountManager=1;
-              //var suspectJson=$scope.newSuspect;
-              //$rootScope.goto('app.suspect');
+               $rootScope.goto('app.suspect');
                console.log($scope.newSuspect);
                console.log($scope.newSuspect.BillingAddress);
     				   SuspectService.createNewSuspect( $scope.newSuspect);
@@ -117,6 +115,7 @@ soulCRMApp.controller('EditSuspectController', function($scope,$rootScope,$state
   $scope.saveEditedSuspect=function() {
   //       alert("update");
          //$scope.editSuspect={};
+         $rootScope.goto('app.suspect');
          console.log($scope.editSuspect);
          /*SuspectService.editSuspect($scope.editSuspect)
          .then(function(response){
@@ -184,6 +183,7 @@ soulCRMApp.controller('EditSuspectController', function($scope,$rootScope,$state
                           onTap:function(e){
                              if(!$scope.noteData.note)
                                 e.preventDefault();
+
                               else
                                 return $scope.noteData.note;
                           }
@@ -192,6 +192,7 @@ soulCRMApp.controller('EditSuspectController', function($scope,$rootScope,$state
         });
         notePopup.then(function(res){
          		console.log(res);
+            $rootScope.goto('app.notes');
         });
         $timeout(function(){
          		notePopup.close();
@@ -199,7 +200,7 @@ soulCRMApp.controller('EditSuspectController', function($scope,$rootScope,$state
     }
   	$scope.addFollowUpPopup=function(){
     	  console.log("follow up popup");
-        $rootScope.goto('app.addfollowuplead')
+        $rootScope.goto('app.addfollowup');
       
   	}
   	convertToLeadPopup=function(){

@@ -19,7 +19,10 @@ soulCRMApp.controller('ContactListController', function($scope,$state,ContactSer
 })
 soulCRMApp.controller('AddContactController', function($scope,$state,LeadService,$rootScope) 
 {
-	   
+	   $scope.addNewContact=function(){
+        $rootScope.goto("app.contact");
+
+     }
 
 })
 soulCRMApp.controller('EditContactController', function($scope,$state,LeadService,$stateParams,$rootScope,$ionicActionSheet,$ionicPopup,$timeout) 
@@ -98,6 +101,7 @@ soulCRMApp.controller('EditContactController', function($scope,$state,LeadServic
         });
         notePopup.then(function(res){
                 console.log(res);
+                 $rootScope.goto('app.notes');
         });
         $timeout(function(){
                 notePopup.close();

@@ -1,17 +1,18 @@
- <ion-header-bar class="bar bar-subheader">
-    <div class="button-bar" >
+<div class="bar bar-subheader">
+   <div class="button-bar">
         <button type="button" class=" button button-dark icon ion-plus-circled"
          ng-click="addNewSuspect()">Add{{prospectLable}} </button>
     </div>
-    <div class="button-bar" >
+    <div class="bar bar-header item-input-inset" >
         <label class="item-input-wrapper">
             <i class="icon ion-ios7-search placeholder-icon"></i>
             <input type="search" placeholder="Search" ng-model="search">
         </label>
-    </div>    
-</ion-header-bar>
-<!--<ion-view title={{prospectLable}} ng-init="init()" left-buttons="leftButtons">-->
-<ion-content padding="true" class="has-subheader" ng-init="init()">
+    </div>   
+  </div> 
+<ion-view title={{prospectLable}} left-buttons="leftButtons">
+<div>
+    <ion-content padding="true" class="has-subheader" ng-init="init()">
     <ion-list>
           <ion-item ng-repeat="suspect in suspectList | filter:search | orderBy:'companyName'" 
                   on-tap="SelectSpecificSuspect(suspect.ContactId)">
@@ -26,41 +27,6 @@
 <ion-infinite-scroll on-infinite="suspectListPaging()" distance="1%"  
      ng-if="!noMoreItemsAvailable" icon="ion-loading-c" >
 </ion-infinite-scroll>
-<!--</ion-view> 
+</div>
+</ion-view> 
  
-
-
-<!-- <div>
- <ion-header-bar class="bar-positive">
-    <h1 class="title">Todo</h1>
-  </ion-header-bar>
-  <div class="bar bar-subheader">
-  <h2 class="title">Sub Header</h2>
-</div>
-<div>
- -->
-<!--<div class="bar bar-subheader">
-  <h2 class="title">Sub Header</h2>
-  <div class="button-bar" >
-        <button type="button" class=" button button-dark icon ion-plus-circled"
-         ng-click="addNewSuspect()">Add {{prospectLable}} </button>
-  </div> 
-  <div class="item-input-inset">
-    <label class="item-input-wrapper">
-      <i class="icon ion-ios7-search placeholder-icon"></i>
-      <input type="search" placeholder="Search" ng-model="search">
-    </label>
-  </div>
-</div>
-  <ion-content class="has-subheader" ng-init="init()" >
-    
-    <ion-list>
-      <ion-item ng-repeat="suspect in suspectList" on-tap="SelectSpecificSuspect(suspect.ContactId)">
-         <label>
-            <span>{{suspect.Name}}</span><br/>
-            <span>{{suspect.Mobile}}</span>
-         </label>
-        
-      </ion-item>
-    </ion-list>
-  </ion-content>-->

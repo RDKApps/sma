@@ -148,7 +148,7 @@ soulCRMApp.config(function($stateProvider, $urlRouterProvider,$httpProvider)
           url: "/followup",
           views:{
                     'menuContent':{
-                                      templateUrl: "src/views/followup/addfollowuplist.html",
+                                      templateUrl: "src/views/followup/followupsuspectlist.html",
                                       controller:"FollowupController"
                                   }
                  }
@@ -166,7 +166,7 @@ soulCRMApp.config(function($stateProvider, $urlRouterProvider,$httpProvider)
           url: "/addfollowuplead",
           views:{
                     'menuContent':{
-                                      templateUrl: "src/views/followup/addfollowuplead.html",
+                                      templateUrl: "src/views/followup/followupleadlist.html",
                                       controller:"FollowupController"
                                   }
                  }
@@ -175,7 +175,7 @@ soulCRMApp.config(function($stateProvider, $urlRouterProvider,$httpProvider)
           url: "/followupreply",
           views:{
                     'menuContent':{
-                                      templateUrl: "src/views/followup/followupreply.html",
+                                      templateUrl: "src/views/followup/followupleadreply.html",
                                       controller:"FollowupController"
                                   }
                  }

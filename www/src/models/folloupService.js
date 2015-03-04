@@ -1,63 +1,32 @@
-soulCRMApp.factory('FollowupService', function($rootScope){
+soulCRMApp.factory('FollowupService', function(){
    var followupObj = {};
    var followupList = [{ 
-                                'id':1,
-            					          'name':'abc',
-	                    		      'mobileno': 12154613,
-                                'companyName':'tcs'
+                                
+            					          'outcome':'lost',
+                                'comments':'comment1',
+	                    		      'actualTakenDate': 12154613
 	                   },
                      { 
-                                 'id':2,
-                                 'name':'xyz',
-                                 'mobileno': 55454465,
-                                 'companyName':'rapidops'
+                                
+                                 'outcome':'won',
+                                'comments':'comment1',
+                                'actualTakenDate': 12154613
                       },
                       {   
-                                 'id':3,
-                                 'name':'pqr',
-                                 'mobileno': 15464650,
-                                 'companyName':'wipro'
+                                 
+                                 'outcome':'visit again',
+                                'comments':'comment1',
+                                'actualTakenDate': 12154613
                        },
                        { 
-                                'id':4,
-                                'name':'qwe',
-                                'mobileno': 12154613,
-                                'companyName':'infosis'
-                       },
-                       { 
-                                'id':5,
-                                'name':'sdf',
-                                'mobileno': 12154613,
-                                'companyName':'kaira'
-                       },
-                       { 
-                                'id':6,
-                                'name':'vbg',
-                                'mobileno': 12154613,
-                                'companyName':'tcs'
-                       },
-                       { 
-                                'id':7,
-                                'name':'dfv',
-                                'mobileno': 12154613,
-                                'companyName':'hyperlink'
-                       },
-                       { 
-                                'id':8,
-                                'name':'vbn',
-                                'mobileno': 12154613,
-                                'companyName':'webline india'
-                       },
-                       { 
-                                'id':9,
-                                'name':'drt',
-                                'mobileno': 12154613,
-                                'companyName':'indusha'
+                                
+                                'outcome':'lost',
+                                'comments':'comment1',
+                                'actualTakenDate': 12154613
                        }];
   
 	followupObj.getfollowupList = function(){
     return followupList;
-    
-}
- 
+  }
+return followupObj;
 });

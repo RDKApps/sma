@@ -5,7 +5,17 @@
     </div>
 </div>
 <ion-view title="Notes">
-    <ion-content padding="true" scroll="true" has-bouncing="true" overflow-scroll="true">
-        Notes
+    <ion-content padding="true" scroll="true" class="has-subheader" has-bouncing="true" overflow-scroll="true" 
+         ng-init="init()">
+        <ion-list>
+                <ion-item ng-repeat="note in noteList">
+                       <label>
+                              <span hidden>{{note.id}}</span>
+                              <span hidden>{{note.companyName}}</span><br/>
+                              <span>{{note.name}}</span>
+                              <span>{{note.mobileno}}</span>
+                       </label>
+                </ion-item>
+          </ion-list>
     </ion-content>
 </ion-view>

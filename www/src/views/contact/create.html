@@ -2,6 +2,16 @@
     <ion-content padding="true" scroll="true" has-bouncing="true" overflow-scroll="true">
         <form name="addcontact">
             <ion-list>
+            <label class="item item-select" >
+                            <span class="input-label">Title
+                                <select name="typeOfContact" ng-model="newLead.title">
+                                    <option value="1">M/S</option>
+                                    <option value="2">Mr</option>
+                                    <option value="3">Mrs</option>
+                                    <option value="4">Miss</option>
+                                </select>
+                            </span>
+                        </label>
                 <label class="item item-input">
                     <input type="text" placeholder="Company name" ng-model="newSuspect.cname">
                 </label>
@@ -31,9 +41,6 @@
                 </label>
                 <label class="item item-input">
                     <input type="text" placeholder="Designation">
-                </label>
-                <label class="item item-input">
-                      <input type="text" placeholder="Reference">
                 </label>
                 <label class="item item-input">
                     <input type="text" placeholder="office phone">

@@ -10,9 +10,6 @@ soulCRMApp.controller('LeadListController', function($scope,$state,LeadService,$
         //calling service to display list of lead
         $scope.leadList = LeadService.getLeadList();
     }
-    $scope.addNewLead=function(){
-    	$rootScope.goto('app.addLead');
-    }
     $scope.SelectSpecificLead=function(){
         $rootScope.goto("app.displayLead");
     }
@@ -20,7 +17,9 @@ soulCRMApp.controller('LeadListController', function($scope,$state,LeadService,$
 })
 soulCRMApp.controller('AddLeadController', function($scope,$state,LeadService,$rootScope) 
 {
-    
+       $scope.saveNewLead=function(){
+            $rootScope.goto("app.lead");
+       }
 })
 soulCRMApp.controller('EditLeadController', function($scope,$state,LeadService,$stateParams,$rootScope,$ionicActionSheet,$ionicPopup,$timeout) 
 {
@@ -41,6 +40,9 @@ soulCRMApp.controller('EditLeadController', function($scope,$state,LeadService,$
   editLead=function(){
     $scope.shouldDisable = false;
     //$scope.edit=false;
+  }
+  $scope.saveEditedLead=function(){
+      $rootScope.goto("app.lead");
   }
   //for action sheet
   $scope.showActionSheet=function(){
@@ -76,11 +78,12 @@ soulCRMApp.controller('EditLeadController', function($scope,$state,LeadService,$
    
     $scope.addFollowUpPopup=function(){
           console.log("follow up popup");
-        $rootScope.goto('app.addfollowup')
+        $rootScope.goto('app.addfollowuplead');
       
     }
     convertToContactPopup=function(){
            console.log("convert To contact Popup");
+           $rootScope.goto("app.addContact");
     }
     deleteLead=function(){
           console.log("delete"+$stateParams.id); 

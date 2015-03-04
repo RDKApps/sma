@@ -1,3 +1,4 @@
+
 <ion-view title="Create New Prospect" >
     <ion-content padding="true">
         <form name="addSuspectForm">
@@ -41,9 +42,6 @@
                         <option value="4">Other</option>
                     </select>
                 </label> 
-                <label class="item item-input" >
-                    <input type="text" placeholder="keyAccountManager" ng-model="newSuspect.KeyAccountManager" />
-                </label>
                 <label class="item item-input">
                     <input type="text" placeholder="timeZone" ng-model="newSuspect.timeZone" />
                 </label>
@@ -91,7 +89,7 @@
                 <div class="button-bar">
                     
                     <button type="button" class="button button-balanced" 
-                        ng-click="saveSuspect()">Save</button>
+                        ng-click="saveNewSuspect()">Save</button>
                 </div>
         </ion-list>
     </form>

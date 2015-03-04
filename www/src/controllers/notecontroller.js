@@ -3,7 +3,10 @@ date:25/02/2015
 name:nirali
 description: for adding the remainder
 */
-soulCRMApp.controller('notesController', function($scope,$rootScope,$ionicPopup,$timeout){
+soulCRMApp.controller('notesController', function($scope,$rootScope,$ionicPopup,$timeout,NoteService){
+  $scope.init=function(){
+    $scope.noteList = NoteService.getNoteList();
+  }
 	$scope.addNotes=function(){
 		console.log("display popup called!!!");
         $scope.data={};

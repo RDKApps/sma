@@ -1,23 +1,11 @@
-<div class="bar bar-subheader">
-    <div class="button-bar">
-        <button type="button" class=" button button-dark icon ion-plus-circled"
-         ng-click="addFollowup()"> Add Followup</button>
-    </div>
-   <!--  <div>
-        <label class="item item-input" name="Search">
-        <i class="icon ion-search placeholder-icon"></i>
-        <input type="search" placeholder="Search" ng-model="search">
-        </label>
-    </div>  -->
-</div>
-<!-- <div class="bar bar-subfooter">
+<div class="bar bar-subfooter">
        <a  class="item item-icon-right item-dark" href="#/app/followupreply">
         <i class="icon ion-android-arrow-forward"></i>REPLY                   
       </a>
-</div> -->
+</div>
 <ion-view title="Followup" ng-init="init()" left-buttons="leftButtons">
     <ion-content padding="true" class="has-header">
-         <<ion-list>
+         <ion-list>
                 <ion-item ng-repeat="followup in followupList">
                        <label>
                               <span hidden>{{followup.id}}</span>
@@ -31,12 +19,3 @@
        </ion-content>
       
 </ion-view>
-
-
- 
-
-
-
-
-
-   
